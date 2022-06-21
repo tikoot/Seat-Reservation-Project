@@ -1,3 +1,34 @@
+let reservedSeats = {
+    record1:{
+        seat:'b19',
+        owner:{
+            fname:"Joe",
+            lname:"Smith"
+        }
+    },
+    record2:{
+        seat:'b20',
+        owner:{
+            fname:"Joe",
+            lname:"Smith"
+        }
+    },
+    record3:{
+        seat:'b21',
+        owner:{
+            fname:"Joe",
+            lname:"Smith"
+        }
+    },
+    record4:{
+        seat:'b22',
+        owner:{
+            fname:"Joe",
+            lname:"Smith"
+        }
+    }
+};
+
 function makeRows(sectionLength,rowLength,placement){
     const rows = ['a','b','c','d','e','f','g','h','i','j','k',
     'l','m','n','o','p','q','r','s','t'];
@@ -46,3 +77,12 @@ makeRows(9,15,'middle');
 
 
 
+for(const key in reservedSeats){
+    if(reservedSeats.hasOwnProperty(key)){
+        const obj = reservedSeats[key];
+    
+        document.getElementById(obj.seat).className = 'r';
+        document.getElementById(obj.seat).innerHTML = "R";
+    }
+    
+}
