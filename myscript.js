@@ -110,22 +110,37 @@ function seatSelectionProcess(thisSeat){
     }
     manageConfirmForm();
 }
+    
 
 document.getElementById('reserve').addEventListener('click',function(event){
     document.getElementById('resform').style.display = 'block';
     event.preventDefault();
+    
 });
 
 document.getElementById('cancel').addEventListener('click',function(event){
+   
     document.getElementById('resform').style.display = 'none';
     event.preventDefault();
+    
 });
 
 function manageConfirmForm(){
     if(selectedSeats.length > 0){
         document.getElementById('confirmers').style.display = 'block';
+        let seatString = selectedSeats.toString();
+        document.getElementById('selectedseats').innerHTML = `you have selected seats ${seatString}`;
     }
     else{
         document.getElementById('confirmers').style.display = 'none';
-    }
+
+        document.getElementById('selectedseats').innerHTML = 'You need to select some seats to reserve.<br><a href ="#" id = "error">Close</a>this dialob box and pick at least one seat.';
+        
+        document.getElementById('error').addEventListener('click',function(event){
+
+        document.getElementById('resform').style.display = 'none';
+    
+    });
+  }
 }
+manageConfirmForm();
