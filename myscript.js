@@ -110,3 +110,13 @@ function seatSelectionProcess(thisSeat){
     }
     console.log(selectedSeats);
 }
+
+document.getElementById('reserve').addEventListener('click',function(event){
+    document.getElementById('resform').style.display = 'block';
+    event.preventDefault();
+});
+
+document.getElementById('cancel').addEventListener('click',function(event){
+    document.getElementById('resform').style.display = 'none';
+    event.preventDefault();
+});
