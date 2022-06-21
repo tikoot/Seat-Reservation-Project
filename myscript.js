@@ -108,7 +108,7 @@ function seatSelectionProcess(thisSeat){
         document.getElementById(thisSeat).className = 's';
 
     }
-    console.log(selectedSeats);
+    manageConfirmForm();
 }
 
 document.getElementById('reserve').addEventListener('click',function(event){
@@ -120,3 +120,12 @@ document.getElementById('cancel').addEventListener('click',function(event){
     document.getElementById('resform').style.display = 'none';
     event.preventDefault();
 });
+
+function manageConfirmForm(){
+    if(selectedSeats.length > 0){
+        document.getElementById('confirmers').style.display = 'block';
+    }
+    else{
+        document.getElementById('confirmers').style.display = 'none';
+    }
+}
