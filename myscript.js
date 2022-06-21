@@ -129,6 +129,9 @@ function manageConfirmForm(){
     if(selectedSeats.length > 0){
         document.getElementById('confirmers').style.display = 'block';
         let seatString = selectedSeats.toString();
+        seatString =seatString.replace(/,/g,", ");
+        seatString =seatString.replace(/,(?=[^,]*$)/g," and");
+
         document.getElementById('selectedseats').innerHTML = `you have selected seats ${seatString}`;
     }
     else{
