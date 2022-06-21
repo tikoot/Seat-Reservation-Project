@@ -1,44 +1,48 @@
-const rows = ['a','b','c','d','e','f','g','h','i','j','k',
-'l','m','n','o','p','q','r','s','t'];
+function makeRows(sectionLength,rowLength,placement){
+    const rows = ['a','b','c','d','e','f','g','h','i','j','k',
+    'l','m','n','o','p','q','r','s','t'];
 
-let html = "";
-let counter = 1;
+    let html = "";
+    let counter = 1;
+        rows.forEach(row =>{
 
-rows.forEach((row) =>{
-    html += `<div class="label">${row}</div>`;
-    for(let i = 0; i < 3; i++){
-        html += `<div id="${row+counter}">${counter}</div>`;
-        counter++;
-    }
-    counter = counter + 12; // add to be numbers correct;
-});
+            switch(placement){
+                case 'left': 
+                    html += `<div class="label">${row}</div>`;
+                    break;
+                case 'right':    
+                    counter = counter + (rowLength - sectionLength);
+                    break;
+                default:
+                    counter = counter + ((rowLength - sectionLength)/2);
+                    break;
+            }
 
-document.getElementById('left').innerHTML = html;
+            for(let i = 0; i < sectionLength; i++){
+                html += `<div class="a" id="${row+counter}">${counter}</div>`;
+                counter++;
+            }
 
-html = "";
-counter = 1;
-rows.forEach((row) =>{
-    
-    counter = counter + 12;
-    for(let i = 0; i < 3; i++){
-        html += `<div id="${row+counter}">${counter}</div>`;
-        counter++;
-    }
-    html += `<div class="label">${row}</div>`;
-});
+            switch(placement){
+                case 'left': 
+                    counter = counter + (rowLength - sectionLength);
+                    break;
+                case 'right':  
+                    html += `<div class="label">${row}</div>`;
+                    break;  
+                default:
+                    counter = counter + ((rowLength - sectionLength)/2);
+                    break;
+            }
+        });
+        
+    document.getElementById(placement).innerHTML = html;
+}
 
-document.getElementById('right').innerHTML = html;
 
-html = "";
-counter = 1;
-rows.forEach((row) =>{
-    
-    counter = counter + 3;
-    for(let i = 0; i < 9; i++){
-        html += `<div id="${row+counter}">${counter}</div>`;
-        counter++;
-    }
-    counter = counter + 3;
-});
+makeRows(3,15,'left');
+makeRows(3,15,'right');
+makeRows(9,15,'middle');
 
-document.getElementById('middle').innerHTML = html;
+
+
