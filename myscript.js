@@ -86,3 +86,27 @@ for(const key in reservedSeats){
     }
     
 }
+
+let selectedSeats = [];
+let seats = document.querySelectorAll('.a');
+
+seats.forEach( seat => {
+    seat.addEventListener('click',function(event){
+        seatSelectionProcess(seat.id);
+    });
+
+});
+
+function seatSelectionProcess(thisSeat){
+    let index = selectedSeats.indexOf(thisSeat);
+    if(index > -1){
+        selectedSeats.splice(index,1);
+        document.getElementById(thisSeat).className = 'a';
+    }
+    else{
+        selectedSeats.push(thisSeat);
+        document.getElementById(thisSeat).className = 's';
+
+    }
+    console.log(selectedSeats);
+}
