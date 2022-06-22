@@ -20,7 +20,7 @@ h1 {
 
 #seating {
 	overflow: hidden;
-	width: 850px;
+	width: 730px;
 	margin: auto;
 	padding-left: 10px;
 }
@@ -33,16 +33,11 @@ h1 {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	width: 37px;
-	height: 37px;
-	line-height: 32px;
+	width: 30px;
+	line-height: 26px;
+	border: 2px solid #ccc;
 	text-align: center;
-	font-size: 10px;
-}
-
-.a {
-	background: url(svg/chair-a.svg) no-repeat;
-	color: #EDEDED;
+	font-size: 12px;
 }
 
 .a:hover, .s:hover {
@@ -50,31 +45,28 @@ h1 {
 }
 
 .a:hover {
-	background: url(svg/chair-h.svg) no-repeat;
-	color:#000;
+	background: #F9E300;
 }
 
 .s {
-	background: url(svg/chair-s.svg) no-repeat;
+	background: #F62BC8;
 }
 
 .r {
-	background: url(svg/chair-r.svg) no-repeat;
-	color: #000;
+	background: #FF0000;
 }
 
 #seating .label {
+	border: 2px solid #fff;
 	text-transform: uppercase;
-	font-size: 12px;
-	line-height: 37px;
 }
 
 #left, #right {
-	width: 188px;
+	width: 160px;
 }
 
 #middle {
-	width: 423px;
+	width: 360px;
 	margin: 0 20px;
 }
 
@@ -105,7 +97,7 @@ h1 {
 	text-align: center;
 }
 
-#confirmres {
+#confirmers {
 	text-align: center;
 }
 

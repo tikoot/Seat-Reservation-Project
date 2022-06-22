@@ -98,17 +98,19 @@ seats.forEach( seat => {
 });
 
 function seatSelectionProcess(thisSeat){
-    let index = selectedSeats.indexOf(thisSeat);
-    if(index > -1){
-        selectedSeats.splice(index,1);
-        document.getElementById(thisSeat).className = 'a';
-    }
-    else{
-        selectedSeats.push(thisSeat);
-        document.getElementById(thisSeat).className = 's';
+    if(!document.getElementById(thisSeat).classList.contains('r')){
+        let index = selectedSeats.indexOf(thisSeat);
+        if(index > -1){
+            selectedSeats.splice(index,1);
+            document.getElementById(thisSeat).className = 'a';
+        }
+        else{
+            selectedSeats.push(thisSeat);
+            document.getElementById(thisSeat).className = 's';
 
+        }
+        manageConfirmForm();
     }
-    manageConfirmForm();
 }
     
 
@@ -146,4 +148,37 @@ function manageConfirmForm(){
     });
   }
 }
+
 manageConfirmForm();
+
+document.getElementById('confirmers').addEventListener('submit',function(event){
+    processReservation();
+    event.preventDefault();
+});
+
+function processReservation(){
+    const hardCodeRecords = Object.keys(reservedSeats).length; //tell how many records are there
+    const fname = document.getElementById('fname').value;
+    const lname = document.getElementById('lname').value;
+    let counter = 1;
+    let nextRecord = '';
+
+    selectedSeats.forEach(function(thisSeat){
+        document.getElementById(thisSeat).className = 'r';
+        document.getElementById(thisSeat).innerHTML = 'R';
+        nextRecord = `record ${hardCodeRecords  + counter}`;
+        reservedSeats[nextRecord] = {
+            seat: thisSeat,
+            owner: {
+                fname : fname,
+                lname : lname
+            }
+        };
+        counter++;
+    });
+
+    document.getElementById('resform').style.display ='none';
+    selectedSeats = [];
+    manageConfirmForm();
+    
+}
